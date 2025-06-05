@@ -6,6 +6,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LandingPage from './components/LandingPage.jsx';
 import CreateAccountForm from './components/CreateAccountForm.jsx';
 import NotFound from './components/NotFound.jsx';
+import Login from './components/Login.jsx';
+import AccountSettings from './components/AccountSettings.jsx';
 
 const appRouter = createBrowserRouter([
   {
@@ -20,6 +22,14 @@ const appRouter = createBrowserRouter([
         path: "/create",
         element: <CreateAccountForm />,
       },
+      {
+        path: "/login",
+        element: <Login />
+      },
+      {
+        path: "/account-settings",
+        element: <AccountSettings />
+      }
     ],
     errorElement: <NotFound />, // Component to render when no route matches (404 page)
   },

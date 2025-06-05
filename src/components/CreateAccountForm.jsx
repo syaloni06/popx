@@ -19,125 +19,147 @@ const CreateAccountForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form logic here (e.g., validation, API call)
-    navigate("/"); // Navigate back to welcome screen
+    console.log(form); // Debug: see form values
+    navigate("/account-settings");
   };
 
   return (
-    <>
-      <div className="flex justify-center items-center min-h-screen bg-white px-4">
-        <form
-          onSubmit={handleSubmit}
-          className="max-w-md w-full space-y-5 text-left"
-        >
-          <h2 className="text-2xl font-bold text-gray-900">
-            Create your PopX account
-          </h2>
-
-          <div>
-            <label className="block text-sm font-medium text-purple-600 mb-1">
-              Full Name<span className="text-red-500">*</span>
-            </label>
-            <input
-              name="fullName"
-              value={form.fullName}
-              onChange={handleChange}
-              className="w-full border rounded-md px-3 py-2"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-purple-600 mb-1">
-              Phone number<span className="text-red-500">*</span>
-            </label>
-            <input
-              name="phone"
-              value={form.phone}
-              onChange={handleChange}
-              className="w-full border rounded-md px-3 py-2"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-purple-600 mb-1">
-              Email address<span className="text-red-500">*</span>
-            </label>
-            <input
-              name="email"
-              type="email"
-              value={form.email}
-              onChange={handleChange}
-              className="w-full border rounded-md px-3 py-2"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-purple-600 mb-1">
-              Password<span className="text-red-500">*</span>
-            </label>
-            <input
-              name="password"
-              type="password"
-              value={form.password}
-              onChange={handleChange}
-              className="w-full border rounded-md px-3 py-2"
-              required
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-purple-600 mb-1">
-              Company name
-            </label>
-            <input
-              name="company"
-              value={form.company}
-              onChange={handleChange}
-              className="w-full border rounded-md px-3 py-2"
-            />
-          </div>
-
-          <div>
-            <p className="text-sm font-medium text-gray-700 mb-2">
-              Are you an Agency?<span className="text-red-500">*</span>
-            </p>
-            <div className="flex space-x-6">
-              <label className="flex items-center space-x-2">
-                <input
-                  type="radio"
-                  name="isAgency"
-                  value="Yes"
-                  checked={form.isAgency === "Yes"}
-                  onChange={handleChange}
-                  className="text-purple-600 focus:ring-purple-600"
-                />
-                <span>Yes</span>
-              </label>
-              <label className="flex items-center space-x-2">
-                <input
-                  type="radio"
-                  name="isAgency"
-                  value="No"
-                  checked={form.isAgency === "No"}
-                  onChange={handleChange}
-                />
-                <span>No</span>
-              </label>
-            </div>
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-[#9A34FF] text-white font-semibold py-3 rounded-lg hover:bg-[#8329d4] transition duration-300"
+    <div className="flex flex-col justify-center items-center min-h-screen bg-white px-4">
+      <h2 className="text-2xl font-bold text-gray-900 mb-6">Create your PopX account</h2>
+      <form className="flex flex-col space-y-6 w-full lg:max-w-md" onSubmit={handleSubmit}>
+        <div className="flex flex-col relative">
+          <label
+            className="absolute bg-white font-semibold text-md text-[#6c25ff] p-1 -top-4 left-3"
+            htmlFor="fullName"
           >
-            Create Account
-          </button>
-        </form>
-      </div>
-    </>
+            Full Name<span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            id="fullName"
+            name="fullName"
+            required
+            value={form.fullName}
+            onChange={handleChange}
+            className="px-4 py-3 outline-none border border-gray-300 rounded-lg"
+            placeholder="Enter full name"
+          />
+        </div>
+
+        <div className="flex flex-col relative">
+          <label
+            className="absolute bg-white font-semibold text-md text-[#6c25ff] p-1 -top-4 left-3"
+            htmlFor="phone"
+          >
+            Phone number<span className="text-red-500">*</span>
+          </label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            required
+            maxLength={10}
+            value={form.phone}
+            onChange={handleChange}
+            className="px-4 py-3 outline-none border border-gray-300 rounded-lg"
+            placeholder="Enter phone number"
+          />
+        </div>
+
+        <div className="flex flex-col relative">
+          <label
+            className="absolute bg-white font-semibold text-md text-[#6c25ff] p-1 -top-4 left-3"
+            htmlFor="email"
+          >
+            Email address<span className="text-red-500">*</span>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            required
+            value={form.email}
+            onChange={handleChange}
+            className="px-4 py-3 outline-none border border-gray-300 rounded-lg"
+            placeholder="Enter email address"
+          />
+        </div>
+
+        <div className="flex flex-col relative">
+          <label
+            className="absolute bg-white font-semibold text-md text-[#6c25ff] p-1 -top-4 left-3"
+            htmlFor="password"
+          >
+            Password<span className="text-red-500">*</span>
+          </label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            required
+            value={form.password}
+            onChange={handleChange}
+            className="px-4 py-3 outline-none border border-gray-300 rounded-lg"
+            placeholder="Enter password"
+          />
+        </div>
+
+        <div className="flex flex-col relative">
+          <label
+            className="absolute bg-white font-semibold text-md text-[#6c25ff] p-1 -top-4 left-3"
+            htmlFor="company"
+          >
+            Company Name
+          </label>
+          <input
+            type="text"
+            id="company"
+            name="company"
+            value={form.company}
+            onChange={handleChange}
+            className="px-4 py-3 outline-none border border-gray-300 rounded-lg"
+            placeholder="Enter company name"
+          />
+        </div>
+
+        <div>
+          <label className="block text-sm font-medium text-black mb-2">
+            Are you an Agency?<span className="text-red-500">*</span>
+          </label>
+          <div className="flex space-x-6">
+            <label className="inline-flex items-center space-x-2">
+              <input
+                type="radio"
+                name="isAgency"
+                value="Yes"
+                checked={form.isAgency === "Yes"}
+                onChange={handleChange}
+                className="h-4 w-4 text-[#6c25ff] focus:ring-purple-500"
+              />
+              <span className="text-sm">Yes</span>
+            </label>
+            <label className="inline-flex items-center space-x-2">
+              <input
+                type="radio"
+                name="isAgency"
+                value="No"
+                checked={form.isAgency === "No"}
+                onChange={handleChange}
+                className="h-4 w-4 text-[#6c25ff] focus:ring-purple-500"
+              />
+              <span className="text-sm">No</span>
+            </label>
+          </div>
+        </div>
+
+        <button
+          type="submit"
+          className="w-full bg-[#6c25ff] hover:bg-[#793df5] text-white font-semibold py-3 rounded mt-10"
+        >
+          Create Account
+        </button>
+      </form>
+    </div>
   );
 };
 

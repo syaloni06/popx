@@ -12,11 +12,13 @@ const LandingPage = () => {
           <div className="space-y-4">
             <button
               onClick={() => navigate("/create")}
-              className="w-full bg-[#9A34FF] text-white font-semibold py-3 rounded-lg hover:bg-[#8329d4] transition duration-300"
+              className="w-full bg-[#6c25ff] text-white font-semibold py-3 rounded-lg hover:bg-[#793df5]"
             >
               Create Account
             </button>
-            <button className="w-full bg-[#E5D9FA] text-black font-semibold py-3 rounded-lg hover:bg-[#d8c7f2] transition duration-300">
+            <button 
+             onClick={() => navigate("/login")}
+            className="w-full bg-[#cbbefa] text-black font-semibold py-3 rounded-lg hover:bg-[#d8c7f2]">
               Already Registered? Login
             </button>
           </div>
